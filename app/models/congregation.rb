@@ -1,0 +1,2 @@
+class Congregation < ApplicationRecord
+end
