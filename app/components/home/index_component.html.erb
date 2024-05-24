@@ -1,1 +1,18 @@
 <h1>Ajuda Humanitária</h1>
+
+<table class="table table-stripped">
+  <tr>
+    <th>Circuito</th>
+    <th>Nome</th>
+    <th>Contato</th>
+    <th>Telefone</th>
+  </tr>
+  <% congregations.each do |congregation| %>
+    <tr>
+      <td><%= congregation.name %></td>
+      <td><%= congregation.circuit.name %></td>
+      <td><%= congregation.contact_person_name %></td>
+      <td><%= congregation.contact_person_phone_number %></td>
+    </tr>
+  <% end %>
+</table>
