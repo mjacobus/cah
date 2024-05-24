@@ -2,6 +2,6 @@
 
 class Home::IndexComponent < ViewComponent::Base
   def congregations
-    @congregations ||= Congregation.includes(:circuit).all
+    @congregations ||= Congregation.order(:city_name).includes(:circuit).all
   end
 end

@@ -2,13 +2,15 @@
 
 <table class="table table-stripped">
   <tr>
-    <th>Circuito</th>
+    <th>Cidade</th>
     <th>Nome</th>
+    <th>Circuito</th>
     <th>Contato</th>
     <th>Telefone</th>
   </tr>
   <% congregations.each do |congregation| %>
     <tr>
+      <td><%= congregation.city_name %></td>
       <td><%= congregation.name %></td>
       <td><%= congregation.circuit.name %></td>
       <td><%= congregation.contact_person_name %></td>
