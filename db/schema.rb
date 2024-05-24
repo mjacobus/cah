@@ -10,14 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_24_191034) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_24_193200) do
   create_table "circuits", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "overseer_name"
-    t.string "overseer_phone_number"
+    t.string "overseer_phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_circuits_on_name", unique: true
+  end
+
+  create_table "congregations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "number"
+    t.string "contact_person_name"
+    t.string "contact_person_phone_number"
+    t.string "city_name"
+    t.string "address"
+    t.bigint "circuit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["circuit_id"], name: "index_congregations_on_circuit_id"
+    t.index ["name", "circuit_id"], name: "index_congregations_on_name_and_circuit_id", unique: true
+    t.index ["number"], name: "index_congregations_on_number", unique: true
   end
 
 end
