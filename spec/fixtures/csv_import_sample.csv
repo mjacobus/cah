@@ -1,0 +1,5 @@
+circuit_name,congregation_name,householder_name,householder_phone_number,neighborhood,street_name,number,complement,postal_code,latitude,longitude
+C-01,Cong-1,Maria,1234,centro,rua dos bobos,zero,complemento1,93600-300,-29.123,59.456
+c-01,cong-1,João,1234,centro,rua dos bobos,tres,complemento2,93600-400,-29.123,59.456
+C-01,Cong-2,Pablo,1234,centro,rua dos espertos,tres,complemento3,93600-500,-29.123,59.456
+C-02,Cong-1,Outro,4324,bela vista,rua dos espertos,tres,complemento4,93600-600,invalid,nothing
