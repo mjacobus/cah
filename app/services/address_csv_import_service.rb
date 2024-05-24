@@ -11,8 +11,6 @@ class AddressCsvImportService
     number
     complement
     postal_code
-    latitude
-    longitude
   ].freeze
 
   def import_csv(url:)
@@ -28,10 +26,21 @@ class AddressCsvImportService
 
   private
 
+  # {:city_name=>"Canoas",
+  #  :congregation_name=>"Central",
+  #  :householder_name=>"Eleonora Schaeff",
+  #  :householder_phone_number=>"(51) 99293-2769",
+  #  :neighborhood=>"Harmonia",
+  #  :street_name=>"R. Fernando Magalhães",
+  #  :number=>"214",
+  #  :complement=>"fundos",
+  #  :postal_code=>"92310450",
+  #  :lat_lon=>"-29.9156479,-51.19343809999999",
+  #  :circuit_name=>"RS-027"}
   def parse(row)
     COLUMNS.each do |column|
       row.fetch(column) do
-        raise "Columns required: #{COLUMNS.join(',')}"
+        raise "Missing: #{column}. Columns required: #{COLUMNS.join(', ')}"
       end
     end
 
@@ -68,6 +77,8 @@ class AddressCsvImportService
   end
 
   def to_decimal(value)
+    return unless value.present?
+
     BigDecimal(value)
   rescue ArgumentError
     nil
