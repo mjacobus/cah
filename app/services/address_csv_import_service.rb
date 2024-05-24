@@ -33,17 +33,8 @@ class AddressCsvImportService
       end
     end
 
-    row[:latitude] = begin
-      BigDecimal(row[:latitude])
-    rescue StandardError
-      nil
-    end
-
-    row[:longitude] = begin
-      BigDecimal(row[:longitude])
-    rescue StandardError
-      nil
-    end
+    row[:latitude] = to_decimal(row[:latitude]) || from_lat_lon(row)[0]
+    row[:longitude] = to_decimal(row[:longitude]) || from_lat_lon(row)[1]
 
     row
   end
@@ -72,5 +63,25 @@ class AddressCsvImportService
     )
 
     address.save!
+  end
+
+  def to_decimal(value)
+    BigDecimal(value)
+  rescue ArgumentError
+    nil
+  end
+
+  # @return [Array<BigDecimal>] or empty array when the value is not valid
+  def from_lat_lon(row)
+    value = row[:lat_lon].to_s.split(',')
+    value = value.map(&:strip).map do |value|
+      to_decimal(value)
+    end
+
+    value = value[0..1]
+
+    return [] unless value.size == 2
+
+    value
   end
 end
