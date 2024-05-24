@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_24_193200) do
   create_table "circuits", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "overseer_name"
-    t.string "overseer_phone"
+    t.string "overseer_phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_circuits_on_name", unique: true
