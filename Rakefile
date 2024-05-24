@@ -21,6 +21,6 @@ Rails.application.load_tasks
 # - latitude
 # - longitude
 desc 'Import CSV file from URL'
-task :import_csv, [:url] => :environment do |task, args|
+task :import_addresses, [:url] => :environment do |task, args|
   AddressCsvImportService.new.import_csv(url: args[:url])
 end
