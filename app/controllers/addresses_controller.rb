@@ -70,6 +70,8 @@ class AddressesController < ApplicationController
       city_name
       complement
       number
+      latitude
+      longitude
     ]
 
     params.require(:address).permit(*fields)

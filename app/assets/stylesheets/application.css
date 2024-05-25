@@ -18,13 +18,18 @@ body {
 }
 
 .data-table {
-  scroll-x: auto;
   max-width: 100%;
-  overflow-y: auto;
+  scroll-x: auto;
+}
+
+.data-table tbody th {
+  position: sticky;
+  top: 0;
 }
 
 .max-height-50vh {
   max-height: 50vh;
+  overflow-y: auto;
 }
 
 .table.nowrap th, .table.nowrap td {
@@ -37,4 +42,14 @@ body {
 
 .invalid-feedback {
   color: #dc3545;
+}
+
+.actions {
+  display: flex;
+  gap: 10rem;
+  /* start from right*/
+  flex-direction: row-reverse;
+  margin-bottom: 1rem;
+  /* same size */
+  /* justify-content: flex-end; */
 }
