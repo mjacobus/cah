@@ -12,6 +12,7 @@ class Congregation < ApplicationRecord
 
   def full_description
     text = name
+    text += " - #{city_name}" if city_name.present?
     text = "#{text} (#{number})" if number.present?
     "#{text} (#{circuit.name})"
   end

@@ -53,3 +53,7 @@ body {
   /* same size */
   /* justify-content: flex-end; */
 }
+
+.alert-secondary {
+  background: #eee;
+}

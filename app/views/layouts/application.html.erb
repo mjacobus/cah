@@ -13,8 +13,13 @@
 
   <body>
     <div class="container">
-      <%= render ::FlashMessageComponent.new(flash: flash) %>
+      <%= render FlashMessageComponent.new(flash: flash) %>
       <%= yield %>
+
+
+      <div class="actions">
+        <%= link_to "Voltar para o início", root_path, class: "btn btn-secondary" %>
+      </div>
     </div>
   </body>
 </html>

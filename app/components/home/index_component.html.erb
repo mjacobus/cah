@@ -1,22 +1,18 @@
 <h1>Ajuda Humanitária</h1>
 
-<table class="table table-striped">
-  <tr>
-    <th>Cidade</th>
-    <th>Nome</th>
-    <th>Circuito</th>
-    <th>Contato</th>
-    <th>Telefone</th>
-    <th>Endereços</th>
-  </tr>
-  <% congregations.each do |congregation| %>
+<div class="data-table">
+  <table class="table table-striped nowrap">
     <tr>
-      <td><%= congregation.city_name %></td>
-      <td><%= congregation.name %></td>
-      <td><%= congregation.circuit.name %></td>
-      <td><%= congregation.contact_person_name %></td>
-      <td><%= congregation.contact_person_phone_number %></td>
-      <td><%= addresses_link(congregation) %></td>
+      <th>Congregação</th>
+      <th>Contato</th>
+      <th>Telefone</th>
     </tr>
-  <% end %>
-</table>
+    <% congregations.each do |congregation| %>
+      <tr>
+        <td><%= addresses_link(congregation) %></td>
+        <td><%= congregation.contact_person_name %></td>
+        <td><%= congregation.contact_person_phone_number %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
