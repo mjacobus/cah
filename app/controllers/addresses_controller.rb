@@ -1,9 +1,17 @@
 class AddressesController < ApplicationController
   def index
-    render Addresses::IndexComponent.new(addresses:)
+    render Addresses::IndexComponent.new(addresses:, congregation:, circuit:)
+  end
+
+  def edit
+    render Addresses::EditComponent.new(address:)
   end
 
   private
+
+  def address
+    @address ||= addresses.find(params[:id])
+  end
 
   def addresses
     @addresses ||= congregation.addresses.ordered_by_householder_name

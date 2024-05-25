@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+}
+
+.data-table {
+  scroll-x: auto;
+  max-width: 100%;
+  overflow-y: auto;
+}
+
+.max-height-50vh {
+  max-height: 50vh;
+}
+
+.table.nowrap th, .table.nowrap td {
+  white-space: nowrap;
+}
+
+.table.no-wrap {
+  scroll-x: auto;
+}

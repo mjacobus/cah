@@ -4,4 +4,8 @@ class ApplicationComponent < ViewComponent::Base
 
     value ? 'Sim' : 'Não'
   end
+
+  def add_title(title)
+    helpers.add_page_title(title)
+  end
 end
