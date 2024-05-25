@@ -4,7 +4,17 @@ class AddressesController < ApplicationController
   end
 
   def edit
-    render Addresses::EditComponent.new(address:)
+    render Addresses::EditComponent.new(address:, congregation:, circuit:)
+  end
+
+  def update
+    if address.update(address_params)
+      flash[:notice] = 'Endreço atualizado com sucesso'
+      return redirect_to(action: :index, id: nil)
+    end
+
+    flash.now[:alert] = 'Verifique o seu formulário'
+    render Addresses::EditComponent.new(address:, congregation:, circuit:)
   end
 
   private
@@ -31,5 +41,20 @@ class AddressesController < ApplicationController
     return unless params[:circuit_id]
 
     @circuit = Circuit.find(params[:circuit_id])
+  end
+
+  def address_params
+    fields = %i[
+      householder_name
+      street_name
+      neighborhood
+      postal_code
+      phone_number
+      city_name
+      complement
+      number
+    ]
+
+    params.require(:address).permit(*fields)
   end
 end

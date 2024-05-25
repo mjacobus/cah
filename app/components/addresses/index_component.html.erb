@@ -17,7 +17,7 @@
     <% addresses.each_with_index do |address, index| %>
       <tr>
         <td><%= address.id %></td>
-        <td><%= address.householder_name %></td>
+        <td><%= link_to(address.householder_name, action: :edit, id: address.id) %></td>
         <td><%= address.phone_number %></td>
         <td><%= address.full_address %></td>
         <td><%= address.congregation.full_description %></td>
