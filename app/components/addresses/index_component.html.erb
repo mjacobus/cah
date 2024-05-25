@@ -2,10 +2,10 @@
 <% add_title("Congregação #{congregation.full_description}") if congregation  %>
 
 <% if congregation  %>
-  <h1>Congregação <%= congregation.full_description %></h1>
+  <h3>Congregação <%= congregation.full_description %></h3>
 <% end %>
 
-<h3>Endereços</h3>
+<h3>Endereços (<%= addresses.count %>)</h3>
 
 <div class="actions">
   <%= link_to('Novo', { action: :new }, class: 'btn btn-primary') %>

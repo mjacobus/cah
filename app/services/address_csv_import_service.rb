@@ -74,6 +74,9 @@ class AddressCsvImportService
     )
 
     address.save!
+  rescue ActiveRecord::RecordInvalid => e
+    puts "Error importing row: #{row}"
+    raise e
   end
 
   def to_decimal(value)
