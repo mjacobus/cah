@@ -22,8 +22,6 @@ class Home::IndexComponent < ViewComponent::Base
   end
 
   def resolved_addresses
-    0
-    # TODO:
-    # @resolved_addresses ||= Address.where(resolved: true).count
+    @resolved_addresses ||= Address.where(resolved: true).count
   end
 end

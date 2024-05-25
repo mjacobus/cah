@@ -5,7 +5,13 @@
   <h3>Congregação <%= congregation.full_description %></h3>
 <% end %>
 
-<h3>Endereços (<%= addresses.count %>)</h3>
+<h3>Endereços</h3>
+
+<div class="alert alert-info">
+  <p>Endereços cadastrados: <strong><%= total_addresses %></strong></p>
+  <p>Endereços verificados: <strong><%= verified_addresses %></strong></p>
+  <p>Endereços resolvidos: <strong><%= resolved_addresses %></strong></p>
+</div>
 
 <div class="actions">
   <%= link_to('Novo', { action: :new }, class: 'btn btn-primary') %>
@@ -22,6 +28,7 @@
         <th>Congregação</th>
         <th>Lat/Lon</th>
         <th>Verificado</th>
+        <th>Resolvido</th>
       </tr>
     </thead>
     <tbody>
@@ -34,6 +41,7 @@
           <td><%= address.congregation.full_description %></td>
           <td><%= address.geolocation %></td>
           <td><%= boolean(address.verified?) %></td>
+          <td><%= boolean(address.resolved?) %></td>
         </tr>
       <% end %>
     </tbody>
