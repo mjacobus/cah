@@ -10,6 +10,6 @@ class Home::IndexComponent < ViewComponent::Base
       congregation.circuit,
       congregation
     )
-    link_to('Endereços', path)
+    link_to(congregation.full_description, path)
   end
 end
