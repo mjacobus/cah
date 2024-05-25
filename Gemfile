@@ -6,6 +6,8 @@ ruby "3.2.2"
 gem "rails", "~> 7.1.3", ">= 7.1.3.3"
 
 gem "bootsnap", require: false # Reduces boot times through caching; required in config/boot.rb
+gem 'caxlsx'
+gem 'caxlsx_rails' # if you want to use it with Rails
 gem "dotenv"
 gem "httparty"
 gem "importmap-rails"
