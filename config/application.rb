@@ -28,5 +28,7 @@ module Cah
     config.generators do |g|
       g.helper false
     end
+
+    config.i18n.default_locale = :'pt-BR'
   end
 end
