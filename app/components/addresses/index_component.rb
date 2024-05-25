@@ -2,10 +2,12 @@
 
 module Addresses
   class IndexComponent < ApplicationComponent
-    attr_reader :addresses
+    attr_reader :addresses, :circuit, :congregation
 
-    def initialize(addresses:)
+    def initialize(addresses:, circuit: nil, congregation: nil)
       @addresses = addresses
+      @circuit = circuit
+      @congregation = congregation
     end
   end
 end
