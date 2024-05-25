@@ -12,6 +12,7 @@ class AddressesController < ApplicationController
     address = congregation.addresses.build(address_params)
 
     if address.save
+      address.update_geolocation
       flash[:notice] = 'Endreço criado com sucesso'
       return redirect_to(action: :index, id: nil)
     end
@@ -27,6 +28,7 @@ class AddressesController < ApplicationController
   def update
     if address.update(address_params)
       flash[:notice] = 'Endreço atualizado com sucesso'
+      address.update_geolocation
       return redirect_to(action: :index, id: nil)
     end
 

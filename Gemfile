@@ -17,6 +17,7 @@ gem "stimulus-rails" # Hotwire's modest JavaScript framework [https://stimulus.h
 gem "turbo-rails" # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem 'view_component', '~> 3.0'
+gem "koine-rest_client"
 
 # gem "image_processing", "~> 1.2" Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 
