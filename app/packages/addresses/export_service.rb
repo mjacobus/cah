@@ -27,6 +27,7 @@ module Addresses
         "Cidade",
         "CEP",
         "Lat/Lon",
+        "Código",
       ])
 
       congregation_addresses(congregation:, addresses:).find_each(batch_size: 100) do |address|
@@ -41,6 +42,7 @@ module Addresses
           address.city_name,
           address.postal_code,
           address.geolocation.to_s,
+          address.id,
         ])
       end
     end
