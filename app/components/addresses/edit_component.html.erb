@@ -1,0 +1,61 @@
+<% add_title("Endereços")  %>
+<% add_title("Congregação #{congregation.full_description}") if congregation  %>
+
+<h1>Endereços / Editar</h1>
+
+<%= form_for(address, url: target_url, local: true, method: method, html: { novalidate: true }, data: { turbo_frame: '_top'})  do |form| %>
+  <% if address.errors.any? %>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading"><%= pluralize(address.errors.count, "erro") %> impedem de salvar esse registro:</h4>
+      <ul>
+        <% address.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label "Nome", class: "form-label" %>
+    <%= form.text_field :householder_name, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label "Telefone", class: "form-label" %>
+    <%= form.text_field :phone_number, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label "Rua", class: "form-label" %>
+    <%= form.text_field :street_name, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label "Número", class: "form-label" %>
+    <%= form.text_field :number, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label "Complemento", class: "form-label" %>
+    <%= form.text_field :complement, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label "Bairro", class: "form-label" %>
+    <%= form.text_field :neighborhood, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label "Cidade", class: "form-label" %>
+    <%= form.text_field :city_name, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label "CEP", class: "form-label" %>
+    <%= form.text_field :postal_code, class: "form-control", required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit submit_label, class: "btn btn-primary" %>
+  </div>
+<% end %>
