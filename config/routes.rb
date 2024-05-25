@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   resources :circuits do
     resources :congregations do
-      resources :addresses
+      resources :addresses do
+        get :export, on: :collection
+      end
     end
   end
 end

@@ -3,6 +3,18 @@ class AddressesController < ApplicationController
     render Addresses::IndexComponent.new(addresses:, congregation:, circuit:)
   end
 
+  def export
+    package = Addresses::ExportService.new.export_xls(addresses)
+
+    respond_to do |format|
+      format.xlsx do
+        filename = "addresses-#{Time.zone.now.strftime('%Y-%m-%d%-H%M%S')}.xlsx"
+        response.headers['Content-Disposition'] = "attachment; filename=#{filename}"
+        render body: package.to_stream.read
+      end
+    end
+  end
+
   def new
     address = congregation.addresses.build
     render Addresses::FormComponent.new(address:, congregation:, circuit:)
