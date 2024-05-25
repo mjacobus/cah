@@ -30,4 +30,8 @@ class Addresses::FormComponent < ApplicationComponent
   def title
     edit? ? 'Editar endereço' : 'Adicionar enderço'
   end
+
+  def cancel_url
+    helpers.url_for(action: :index)
+  end
 end

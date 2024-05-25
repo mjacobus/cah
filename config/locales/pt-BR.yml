@@ -22,6 +22,8 @@ pt-BR:
         complement: "Complemento"
         verified: "Verirfiado"
         neighborhood: "Bairro"
+        latitude: "Latitude"
+        longitude: "Longitude"
       congregation:
         name: "Nome"
         number: "Número"

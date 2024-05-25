@@ -54,7 +54,22 @@
     <%= render InputErrorComponent.new(record: address, field_name: :postal_code) %>
   </div>
 
+  <p> Cordenadas goeoográficas. Opcional. </p>
+  <div class="form-group">
+    <%= form.label :latitude, class: "form-label" %>
+    <%= form.number_field :latitude, class: "form-control", step: 0.000001 %>
+    <%= render InputErrorComponent.new(record: address, field_name: :latitude) %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :longitude, class: "form-label" %>
+    <%= form.number_field :longitude, class: "form-control", step: 0.000001 %>
+    <%= render InputErrorComponent.new(record: address, field_name: :longitude) %>
+  </div>
+
   <div class="actions">
     <%= form.submit submit_label, class: "btn btn-primary" %>
+
+    <%= link_to "Cancelar", cancel_url, class: "btn btn-danger" %>
   </div>
 <% end %>

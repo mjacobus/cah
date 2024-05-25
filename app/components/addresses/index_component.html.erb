@@ -7,29 +7,35 @@
 
 <h2>Endereços</h2>
 
-<%= link_to('Novo', action: :new, congregation_id: congregation&.id, class: 'btn btn-primary') %>
+<div class="actions">
+  <%= link_to('Novo', { action: :new }, class: 'btn btn-primary') %>
+</div>
 
 <div class="table-responsive max-height-50vh">
   <table class="table table-striped nowrap">
-    <tr>
-      <th>Código</th>
-      <th>Nome</th>
-      <th>Telefone</th>
-      <th>Endereço</th>
-      <th>Congregação</th>
-      <th>Lat/Lon</th>
-      <th>Verificado</th>
-    </tr>
-    <% addresses.each_with_index do |address, index| %>
+    <thead>
       <tr>
-        <td><%= address.id %></td>
-        <td><%= link_to(address.householder_name, action: :edit, id: address.id) %></td>
-        <td><%= address.phone_number %></td>
-        <td><%= address.full_address %></td>
-        <td><%= address.congregation.full_description %></td>
-        <td><%= address.geolocation %></td>
-        <td><%= boolean(address.verified?) %></td>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Telefone</th>
+        <th>Endereço</th>
+        <th>Congregação</th>
+        <th>Lat/Lon</th>
+        <th>Verificado</th>
       </tr>
-    <% end %>
+    </thead>
+    <tbody>
+      <% addresses.each_with_index do |address, index| %>
+        <tr>
+          <td><%= address.id %></td>
+          <td><%= link_to(address.householder_name, action: :edit, id: address.id) %></td>
+          <td><%= address.phone_number %></td>
+          <td><%= address.full_address %></td>
+          <td><%= address.congregation.full_description %></td>
+          <td><%= address.geolocation %></td>
+          <td><%= boolean(address.verified?) %></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>
