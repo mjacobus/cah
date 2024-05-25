@@ -83,7 +83,24 @@
       <%= form.number_field :longitude, class: "form-control", step: 0.000001 %>
       <%= render InputErrorComponent.new(record: address, field_name: :longitude) %>
     </div>
+
+    <% if edit? %>
+      <div class="form-check">
+        <%= form.check_box :verified, class: "form-check-input" %>
+        <%= form.label :verified, class: "form-check-label" %>
+      </div>
+    <% end %>
   </div>
+
+  <% if edit? %>
+    <h5>Status da ajuda</h5>
+    <div class="alert alert-info">
+      <div class="form-check">
+        <%= form.check_box :resolved, class: "form-check-input" %>
+        <%= form.label :resolved, class: "form-check-label" %>
+      </div>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit submit_label, class: "btn btn-success" %>

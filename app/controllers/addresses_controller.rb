@@ -72,6 +72,8 @@ class AddressesController < ApplicationController
       number
       latitude
       longitude
+      resolved
+      verified
     ]
 
     params.require(:address).permit(*fields)
