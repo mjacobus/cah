@@ -3,8 +3,25 @@ class AddressesController < ApplicationController
     render Addresses::IndexComponent.new(addresses:, congregation:, circuit:)
   end
 
+  def new
+    address = congregation.addresses.build
+    render Addresses::FormComponent.new(address:, congregation:, circuit:)
+  end
+
+  def create
+    address = congregation.addresses.build(address_params)
+
+    if address.save
+      flash[:notice] = 'Endreço criado com sucesso'
+      return redirect_to(action: :index, id: nil)
+    end
+
+    flash.now[:alert] = 'Verifique o seu formulário'
+    render Addresses::FormComponent.new(address:, congregation:, circuit:)
+  end
+
   def edit
-    render Addresses::EditComponent.new(address:, congregation:, circuit:)
+    render Addresses::FormComponent.new(address:, congregation:, circuit:)
   end
 
   def update
@@ -14,7 +31,7 @@ class AddressesController < ApplicationController
     end
 
     flash.now[:alert] = 'Verifique o seu formulário'
-    render Addresses::EditComponent.new(address:, congregation:, circuit:)
+    render Addresses::FormComponent.new(address:, congregation:, circuit:)
   end
 
   private
