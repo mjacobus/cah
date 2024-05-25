@@ -25,4 +25,34 @@ class Address < ApplicationRecord
 
     Geolocation.new(latitude, longitude)
   end
+
+  def update_geolocation(force: false)
+    return if force == false && geolocation.present?
+
+    client = GoogleMaps::Client.create
+    service = GoogleMaps::Service.new(client)
+    data = service.get_location(address: address_for_google_lookup)
+
+    location = data.dig('results', 0, 'geometry', 'location')
+
+    raise("Error saving address #{location['error']}") if location['error']
+
+    self.latitude = location['lat']
+    self.longitude = location['lng']
+    save || raise("Error saving address #{errors.full_messages}")
+  rescue RuntimeError => e
+    Rails.logger.info("Error updating geolocation for account #{id}: #{e.message}")
+    raise e if Rails.env.development?
+  end
+
+  private
+
+  def address_for_google_lookup
+    parts = []
+    parts << [street_name, number].join(' ')
+    parts << neighborhood
+    parts << city_name
+    parts << postal_code
+    parts.compact.join(', ')
+  end
 end
