@@ -1,63 +1,54 @@
 <% add_title("Endereços")  %>
 <% add_title("Congregação #{congregation.full_description}") if congregation  %>
 
-<h1>Endereços / Editar</h1>
+<% if congregation  %>
+  <h1>Congregação <%= congregation.full_description %></h1>
+<% end %>
 
 <%= form_for(address, url: target_url, local: true, method: method, html: { novalidate: true }, data: { turbo_frame: '_top'})  do |form| %>
-  <% if address.errors.any? %>
-    <div class="alert alert-danger">
-      <h4 class="alert-heading"><%= pluralize(address.errors.count, "erro") %> impedem de salvar esse registro:</h4>
-      <ul>
-        <% address.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="mb-3">
+  <div class="form-group">
     <%= form.label "Nome", class: "form-label" %>
     <%= form.text_field :householder_name, class: "form-control", required: true %>
     <%= render InputErrorComponent.new(record: address, field_name: :householder_name) %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group">
     <%= form.label "Telefone", class: "form-label" %>
     <%= form.text_field :phone_number, class: "form-control", required: true %>
     <%= render InputErrorComponent.new(record: address, field_name: :phone_number) %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group">
     <%= form.label "Rua", class: "form-label" %>
     <%= form.text_field :street_name, class: "form-control", required: true %>
     <%= render InputErrorComponent.new(record: address, field_name: :street_name) %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group">
     <%= form.label "Número", class: "form-label" %>
     <%= form.text_field :number, class: "form-control", required: true %>
     <%= render InputErrorComponent.new(record: address, field_name: :number) %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group">
     <%= form.label "Complemento", class: "form-label" %>
     <%= form.text_field :complement, class: "form-control", required: true %>
     <%= render InputErrorComponent.new(record: address, field_name: :complement) %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group">
     <%= form.label "Bairro", class: "form-label" %>
     <%= form.text_field :neighborhood, class: "form-control", required: true %>
     <%= render InputErrorComponent.new(record: address, field_name: :neighborhood) %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group">
     <%= form.label "Cidade", class: "form-label" %>
     <%= form.text_field :city_name, class: "form-control", required: true %>
     <%= render InputErrorComponent.new(record: address, field_name: :city_name) %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group">
     <%= form.label "CEP", class: "form-label" %>
     <%= form.text_field :postal_code, class: "form-control", required: true %>
     <%= render InputErrorComponent.new(record: address, field_name: :postal_code) %>

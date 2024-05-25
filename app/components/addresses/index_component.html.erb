@@ -1,7 +1,13 @@
 <% add_title("Endereços")  %>
 <% add_title("Congregação #{congregation.full_description}") if congregation  %>
 
-<h1>Endereços</h1>
+<% if congregation  %>
+  <h1>Congregação <%= congregation.full_description %></h1>
+<% end %>
+
+<h2>Endereços</h2>
+
+<%= link_to('Novo', action: :new, congregation_id: congregation&.id, class: 'btn btn-primary') %>
 
 <div class="table-responsive max-height-50vh">
   <table class="table table-striped nowrap">
