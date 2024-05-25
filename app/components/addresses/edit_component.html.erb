@@ -18,41 +18,49 @@
   <div class="mb-3">
     <%= form.label "Nome", class: "form-label" %>
     <%= form.text_field :householder_name, class: "form-control", required: true %>
+    <%= render InputErrorComponent.new(record: address, field_name: :householder_name) %>
   </div>
 
   <div class="mb-3">
     <%= form.label "Telefone", class: "form-label" %>
     <%= form.text_field :phone_number, class: "form-control", required: true %>
+    <%= render InputErrorComponent.new(record: address, field_name: :phone_number) %>
   </div>
 
   <div class="mb-3">
     <%= form.label "Rua", class: "form-label" %>
     <%= form.text_field :street_name, class: "form-control", required: true %>
+    <%= render InputErrorComponent.new(record: address, field_name: :street_name) %>
   </div>
 
   <div class="mb-3">
     <%= form.label "Número", class: "form-label" %>
     <%= form.text_field :number, class: "form-control", required: true %>
+    <%= render InputErrorComponent.new(record: address, field_name: :number) %>
   </div>
 
   <div class="mb-3">
     <%= form.label "Complemento", class: "form-label" %>
     <%= form.text_field :complement, class: "form-control", required: true %>
+    <%= render InputErrorComponent.new(record: address, field_name: :complement) %>
   </div>
 
   <div class="mb-3">
     <%= form.label "Bairro", class: "form-label" %>
     <%= form.text_field :neighborhood, class: "form-control", required: true %>
+    <%= render InputErrorComponent.new(record: address, field_name: :neighborhood) %>
   </div>
 
   <div class="mb-3">
     <%= form.label "Cidade", class: "form-label" %>
     <%= form.text_field :city_name, class: "form-control", required: true %>
+    <%= render InputErrorComponent.new(record: address, field_name: :city_name) %>
   </div>
 
   <div class="mb-3">
     <%= form.label "CEP", class: "form-label" %>
     <%= form.text_field :postal_code, class: "form-control", required: true %>
+    <%= render InputErrorComponent.new(record: address, field_name: :postal_code) %>
   </div>
 
   <div class="actions">
