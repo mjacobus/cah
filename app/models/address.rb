@@ -9,6 +9,8 @@ class Address < ApplicationRecord
   validates :latitude, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90, allow_nil: true }
 
   scope :ordered_by_householder_name, ->(direction: :asc) { order(householder_name: direction) }
+  scope :unresolved, -> { where(resolved: false) }
+  scope :resolved, -> { where(resolved: true) }
 
   def full_address
     [

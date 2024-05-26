@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'home#index'
 
+  get :export, to: 'addresses#export'
+
   resources :circuits do
     resources :congregations do
       resources :addresses do
