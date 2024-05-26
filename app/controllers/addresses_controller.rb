@@ -8,7 +8,11 @@ class AddressesController < ApplicationController
 
     respond_to do |format|
       format.xlsx do
-        filename = "addresses-#{Time.zone.now.strftime('%Y-%m-%d%-H%M%S')}.xlsx"
+        filename_parts = ['Endereços']
+        filename_parts << congregation.full_description if congregation
+        filename_parts << Time.zone.now.strftime('%Y-%m-%d%-H%M%S')
+        filename = filename_parts.join('-').parameterize
+        filename = "#{filename}.xlsx"
         response.headers['Content-Disposition'] = "attachment; filename=#{filename}"
         render body: package.to_stream.read
       end
