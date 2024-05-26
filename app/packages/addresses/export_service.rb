@@ -1,13 +1,16 @@
 module Addresses
   class ExportService
-    def export_xls(addresses)
+    def initialize(one_sheet_per_congregation: false)
+      @one_sheet_per_congregation = one_sheet_per_congregation
+    end
+
+    def export_xls(addresses:)
       package = Axlsx::Package.new
-      wb = package.workbook
+      workbook = package.workbook
 
       query_for(addresses:).find_each(batch_size: 20) do |congregation|
-        wb.add_worksheet(name: congregation.name) do |sheet|
-          add_addresses_to_worksheet(sheet:, congregation:, addresses:)
-        end
+        sheet = worksheet_for(congregation, workbook:)
+        add_addresses_to_worksheet(sheet:, congregation:, addresses:)
       end
 
       package
@@ -56,6 +59,18 @@ module Addresses
 
     def congregation_addresses(congregation:, addresses:)
       congregation.addresses.where(id: addresses.select(:id))
+    end
+
+    def worksheet_for(congregation, workbook:)
+      if @one_sheet_per_congregation
+        sheet = workbook.worksheets.find { |sheet| sheet.name == congregation.name }
+        sheet ||= workbook.add_worksheet(name: congregation.name)
+        return sheet
+      end
+
+      sheet = workbook.worksheets.first
+      sheet ||= workbook.add_worksheet(name: "Endereços")
+      sheet
     end
   end
 end

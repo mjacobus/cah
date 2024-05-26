@@ -4,7 +4,11 @@ class AddressesController < ApplicationController
   end
 
   def export
-    package = Addresses::ExportService.new.export_xls(addresses)
+    addresses = self.addresses
+    addresses = addresses.unresolved if params[:unresolved]
+
+    service = Addresses::ExportService.new(one_sheet_per_congregation: false)
+    package = service.export_xls(addresses:)
 
     respond_to do |format|
       format.xlsx do
@@ -59,7 +63,9 @@ class AddressesController < ApplicationController
   end
 
   def addresses
-    @addresses ||= congregation.addresses.ordered_by_householder_name
+    @addresses ||= congregation.addresses.ordered_by_householder_name if congregation
+    @addresses ||= Address.ordered_by_householder_name
+    @addresses
   end
 
   def congregation
