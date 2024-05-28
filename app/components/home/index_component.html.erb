@@ -22,3 +22,8 @@
     <% end %>
   </table>
 </div>
+
+<div class="actions">
+  <%= link_to('Exportar Todos', export_all_url, class: 'btn btn-success') %>
+  <%= link_to('Exportar Pendentes', export_unresolved_url, class: 'btn btn-success') %>
+</div>
