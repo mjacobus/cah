@@ -24,4 +24,12 @@ class Home::IndexComponent < ViewComponent::Base
   def resolved_addresses
     @resolved_addresses ||= Address.where(resolved: true).count
   end
+
+  def export_all_url
+    export_url(format: :xlsx)
+  end
+
+  def export_unresolved_url
+    export_url(format: :xlsx, unresolved: true)
+  end
 end
