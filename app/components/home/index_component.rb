@@ -13,16 +13,8 @@ class Home::IndexComponent < ViewComponent::Base
     link_to(congregation.full_description, path)
   end
 
-  def total_addresses
-    @total_addresses ||= Address.count
-  end
-
-  def verified_addresses
-    @verified_addresses ||= Address.where(verified: true).count
-  end
-
-  def resolved_addresses
-    @resolved_addresses ||= Address.where(resolved: true).count
+  def stats
+    @stats ||= Addresses::StatsComponent.new(addresses: Address.all)
   end
 
   def export_all_url

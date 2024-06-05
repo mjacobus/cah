@@ -1,17 +1,9 @@
-# frozen_string_literal: true
-
 module Addresses
-  class IndexComponent < ApplicationComponent
-    attr_reader :addresses, :circuit, :congregation
+  class StatsComponent < ApplicationComponent
+    attr_reader :addresses
 
-    def initialize(addresses:, circuit: nil, congregation: nil)
+    def initialize(addresses:)
       @addresses = addresses
-      @circuit = circuit
-      @congregation = congregation
-    end
-
-    def stats
-      @stats ||= StatsComponent.new(addresses:)
     end
 
     def total_addresses
@@ -31,7 +23,7 @@ module Addresses
     end
 
     def progress_percentage
-      (resolved_addresses * 100) / total_addresses
+      ((resolved_addresses.to_f * 100) / total_addresses.to_f).round(2)
     end
   end
 end

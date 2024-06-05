@@ -7,11 +7,7 @@
 
 <h3>Endereços</h3>
 
-<div class="alert alert-info">
-  <p>Endereços cadastrados: <strong><%= total_addresses %></strong></p>
-  <p>Endereços verificados: <strong><%= verified_addresses %></strong></p>
-  <p>Endereços resolvidos: <strong><%= resolved_addresses %></strong></p>
-</div>
+<%= render stats %>
 
 <div class="actions">
   <%= link_to('Novo', { action: :new }, class: 'btn btn-primary') %>
