@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Home::IndexComponent < ViewComponent::Base
+class Home::IndexComponent < ApplicationComponent
   def congregations
     @congregations ||= Congregation.order(:city_name).includes(:circuit).all
   end
