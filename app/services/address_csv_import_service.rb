@@ -16,7 +16,7 @@ class AddressCsvImportService
   def import_csv(url:)
     response = HTTParty.get(url)
 
-    ActiveRecord::Base.transaction do
+    AR::Base.transaction do
       CSV.parse(response.body, headers: true) do |row|
         values = parse(row.to_h.symbolize_keys)
         import_row(values)
