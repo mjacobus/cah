@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
+  include DeviseConcern
+
   before_action :set_timezone
+  before_action :authenticate_user!
 
   private
 
