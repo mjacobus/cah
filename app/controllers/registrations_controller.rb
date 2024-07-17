@@ -7,6 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
       resource.update(confirmation_token: nil)
     end
 
+    # first user gets to be admin
     if resource.class.count == 1
       resource.update(admin: true, confirmed_at: Time.now)
     end
