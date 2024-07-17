@@ -19,6 +19,9 @@
 
       <div class="actions">
         <%= link_to "Voltar para o início", root_path, class: "btn btn-secondary" %>
+        <% if current_user %>
+          <%= link_to 'Logout', destroy_user_session_path, data: { method: :delete }, class: 'btn btn-secondary' %>
+        <% end %>
       </div>
     </div>
   </body>
