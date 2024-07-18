@@ -25,6 +25,24 @@ RSpec.describe AddressCsvImportService do
       expect(circuits.map(&:name).sort).to eq(%w[C-01 C-02])
     end
 
+    it 'imports city anmes' do
+      expect(addresses.map(&:city_name)).to eq(%w[
+                                                 POA
+                                                 POA
+                                                 POA
+                                                 NH
+                                               ])
+    end
+
+    it 'imports stages' do
+      expect(addresses.map(&:stage)).to eq(%w[
+                                             pending
+                                             pending
+                                             in_progress
+                                             done
+                                           ])
+    end
+
     it 'imports postal_code' do
       expect(addresses.map(&:postal_code)).to eq(%w[
                                                    93600-300

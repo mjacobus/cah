@@ -63,6 +63,7 @@ class AddressCsvImportService
 
     address = Address.new(
       congregation:,
+      stage: resolve_stage(row[:stage]),
       city_name: row[:city_name],
       householder_name: row[:householder_name],
       phone_number: row[:householder_phone_number],
@@ -79,6 +80,14 @@ class AddressCsvImportService
   rescue ActiveRecord::RecordInvalid => e
     puts "Error importing row: #{row}"
     raise e
+  end
+
+  def resolve_stage(stage)
+    @stages ||= I18n.t('activerecord.attributes.address.stages').map do |key, value|
+      [value.downcase.to_param, key]
+    end.to_h
+
+    @stages[stage.to_s.downcase.to_param] || :pending
   end
 
   def to_decimal(value)
