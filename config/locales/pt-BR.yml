@@ -22,7 +22,7 @@ pt-BR:
         complement: "Complemento"
         verified: "Verificado"
         resolved: "Resolvido"
-        stage: "Estágio"
+        stage: "Etapa"
         neighborhood: "Bairro"
         latitude: "Latitude"
         longitude: "Longitude"
