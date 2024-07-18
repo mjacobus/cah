@@ -13,7 +13,7 @@ module Addresses
       'Lat/Lon',
       'Código',
       'Atualizado',
-      'Stage'
+      'Etapa'
     ].freeze
 
     def initialize(one_sheet_per_congregation: false)
