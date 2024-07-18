@@ -96,7 +96,6 @@ class AddressesController < ApplicationController
       number
       latitude
       longitude
-      resolved
       verified
       stage
     ]
