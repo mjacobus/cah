@@ -3,6 +3,7 @@ require 'csv'
 class AddressCsvImportService
   COLUMNS = %i[
     circuit_name
+    city_name
     congregation_name
     householder_name
     householder_phone_number
@@ -57,6 +58,7 @@ class AddressCsvImportService
       circuit_id: circuit.id
     ) do |c|
       c.circuit = circuit
+      c.city_name = row[:city_name]
     end
 
     address = Address.new(
