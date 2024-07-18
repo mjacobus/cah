@@ -5,10 +5,14 @@
   </div>
   <div>
     <strong>Resolvidos:</strong>
-    <span><%= resolved_addresses %> (<%= progress_percentage %>%)</span>
+    <span><%= resolved_addresses %> (<%= percentage(resolved_addresses) %>%)</span>
+  </div>
+  <div>
+    <strong>Em Andamento:</strong>
+    <span><%= in_progress_addresses %> (<%= percentage(in_progress_addresses) %>%)</span>
   </div>
   <div>
     <strong>Pendentes:</strong>
-    <span><%= unresolved_addresses %></span>
+    <span><%= pending_addresses %> (<%= percentage(pending_addresses) %>%)</span>
   </div>
 </div>

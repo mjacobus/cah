@@ -10,16 +10,20 @@ module Addresses
       @total_addresses ||= addresses.count
     end
 
+    def percentage(number)
+      ((number.to_f * 100) / total_addresses.to_f).round(2)
+    end
+
     def resolved_addresses
       @resolved_addresses ||= addresses.where(stage: :done).count
     end
 
-    def unresolved_addresses
-      @unresolved_addresses ||= total_addresses - resolved_addresses
+    def in_progress_addresses
+      @in_progress_addresses ||= addresses.where(stage: :in_progress).count
     end
 
-    def progress_percentage
-      ((resolved_addresses.to_f * 100) / total_addresses.to_f).round(2)
+    def pending_addresses
+      @pending_addresses ||= addresses.where(stage: :pending).count
     end
   end
 end
