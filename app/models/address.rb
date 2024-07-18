@@ -1,12 +1,15 @@
 class Address < ApplicationRecord
   belongs_to :congregation
 
+  enum stage: { pending: 0, in_progress: 1, done: 2 }
+
   validates :householder_name, presence: true
   validates :street_name, presence: true
   validates :number, presence: true
   validates :city_name, presence: true
   validates :latitude, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90, allow_nil: true }
   validates :latitude, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90, allow_nil: true }
+  validates :stage, presence: true
 
   scope :ordered_by_householder_name, ->(direction: :asc) { order(householder_name: direction) }
   scope :unresolved, -> { where(resolved: false) }
