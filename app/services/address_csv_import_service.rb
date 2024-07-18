@@ -12,6 +12,7 @@ class AddressCsvImportService
     number
     complement
     postal_code
+    stage
   ].freeze
 
   def import_csv(url:)
