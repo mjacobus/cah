@@ -102,6 +102,17 @@
     </div>
   <% end %>
 
+  <% if edit? %>
+    <h5>Estágio da ajuda</h5>
+    <div class="alert alert-info">
+      <div class="form-check">
+        <%= form.label :stage, class: "form-label" %>
+        <%= form.select :stage, stage_options, {}, class: "form-control" %>
+        <%= render InputErrorComponent.new(record: address, field_name: :longitude) %>
+      </div>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= form.submit submit_label, class: "btn btn-success" %>
 

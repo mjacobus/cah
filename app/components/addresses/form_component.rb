@@ -15,6 +15,14 @@ class Addresses::FormComponent < ApplicationComponent
     circuit_congregation_addresses_path(circuit, congregation)
   end
 
+  def stage_options
+    [
+      [address_stage(Address.new(stage: :pending)), :pending],
+      [address_stage(Address.new(stage: :in_progress)), :in_progress],
+      [address_stage(Address.new(stage: :done)), :done]
+    ]
+  end
+
   def method
     edit? ? :patch : :post
   end
