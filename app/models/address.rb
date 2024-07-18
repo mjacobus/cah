@@ -52,6 +52,10 @@ class Address < ApplicationRecord
     raise e if Rails.env.development?
   end
 
+  def human_stage_name
+    I18n.t("activerecord.attributes.address.stages.#{stage}")
+  end
+
   private
 
   def address_for_google_lookup

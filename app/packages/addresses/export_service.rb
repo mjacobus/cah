@@ -13,7 +13,7 @@ module Addresses
       'Lat/Lon',
       'Código',
       'Atualizado',
-      'Resolvido'
+      'Stage'
     ].freeze
 
     def initialize(one_sheet_per_congregation: false)
@@ -49,7 +49,7 @@ module Addresses
                         address.geolocation.to_s,
                         address.id,
                         address.updated_at,
-                        address.resolved? ? 'Sim' : 'Não'
+                        address.human_stage_name
                       ])
       end
     end
