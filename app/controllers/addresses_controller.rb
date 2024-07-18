@@ -5,7 +5,7 @@ class AddressesController < ApplicationController
 
   def export
     addresses = self.addresses
-    addresses = addresses.unresolved if params[:unresolved]
+    addresses = addresses.with_stage(params[:stage]) if params[:stage]
 
     service = Addresses::ExportService.new(one_sheet_per_congregation: false)
     package = service.export_xls(addresses:)
