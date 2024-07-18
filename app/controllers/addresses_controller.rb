@@ -98,6 +98,7 @@ class AddressesController < ApplicationController
       longitude
       resolved
       verified
+      stage
     ]
 
     params.require(:address).permit(*fields)

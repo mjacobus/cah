@@ -22,9 +22,14 @@ pt-BR:
         complement: "Complemento"
         verified: "Verificado"
         resolved: "Resolvido"
+        stage: "Estágio"
         neighborhood: "Bairro"
         latitude: "Latitude"
         longitude: "Longitude"
+        stages:
+          pending: "Pendente"
+          in_progress: "Em andamento"
+          done: "Concluído"
       congregation:
         name: "Nome"
         number: "Número"
