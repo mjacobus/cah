@@ -10,6 +10,6 @@ class ApplicationComponent < ViewComponent::Base
   end
 
   def address_stage(address)
-    I18n.t("activerecord.attributes.address.stages.#{address.stage}")
+    address.human_stage_name
   end
 end
