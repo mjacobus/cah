@@ -21,6 +21,9 @@
 </div>
 
 <div class="actions">
-  <%= link_to('Exportar Todos', export_all_url, class: 'btn btn-success') %>
-  <%= link_to('Exportar Pendentes', export_unresolved_url, class: 'btn btn-success') %>
+  <span>Exportar:<span>
+  <%= link_to('Todos os endereços', export_xls_url, class: 'btn') %>
+  <%= link_to('Endereços pendentes', export_xls_url(stage: :pending), class: 'btn') %>
+  <%= link_to('Endereços em progresso', export_xls_url(stage: :in_progress), class: 'btn') %>
+  <%= link_to('Endereços concluídos', export_xls_url(stage: :done), class: 'btn') %>
 </div>

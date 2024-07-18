@@ -17,11 +17,7 @@ class Home::IndexComponent < ApplicationComponent
     @stats ||= Addresses::StatsComponent.new(addresses: Address.all)
   end
 
-  def export_all_url
-    export_url(format: :xlsx)
-  end
-
-  def export_unresolved_url
-    export_url(format: :xlsx, unresolved: true)
+  def export_xls_url(**params)
+    export_url(format: :xlsx, **params)
   end
 end

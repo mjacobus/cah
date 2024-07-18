@@ -14,8 +14,7 @@ class Address < ApplicationRecord
   validates :stage, presence: true
 
   scope :ordered_by_householder_name, ->(direction: :asc) { order(householder_name: direction) }
-  scope :unresolved, -> { where(resolved: false) }
-  scope :resolved, -> { where(resolved: true) }
+  scope :with_stage, ->(stage) { where(stage:) }
 
   def full_address
     [
