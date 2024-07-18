@@ -1,4 +1,6 @@
 class Address < ApplicationRecord
+  self.ignored_columns = %w[resolved]
+
   belongs_to :congregation
 
   enum stage: { pending: 0, in_progress: 1, done: 2 }

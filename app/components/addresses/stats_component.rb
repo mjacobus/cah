@@ -10,12 +10,8 @@ module Addresses
       @total_addresses ||= addresses.count
     end
 
-    def verified_addresses
-      @verified_addresses ||= addresses.where(verified: true).count
-    end
-
     def resolved_addresses
-      @resolved_addresses ||= addresses.where(resolved: true).count
+      @resolved_addresses ||= addresses.where(stage: :done).count
     end
 
     def unresolved_addresses
