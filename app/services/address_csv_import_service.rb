@@ -84,11 +84,19 @@ class AddressCsvImportService
   end
 
   def resolve_stage(stage)
+    stages[stage.to_s.downcase.to_param] || :pending
+  end
+
+  def stages
+    return @stages if @stages
+
     @stages ||= I18n.t('activerecord.attributes.address.stages').map do |key, value|
       [value.downcase.to_param, key]
     end.to_h
 
-    @stages[stage.to_s.downcase.to_param] || :pending
+    @stages['a iniciar'] = 'pending'
+
+    @stages
   end
 
   def to_decimal(value)
