@@ -8,6 +8,8 @@ class ApplicationComponent < ViewComponent::Base
   def format_date(date, format: :default)
     return if date.nil?
 
+    date = date.in_time_zone('Brasilia') if date.is_a?(Time)
+
     l(date.to_date, format:)
   end
 
