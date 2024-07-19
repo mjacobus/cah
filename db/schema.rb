@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_18_215008) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_19_211640) do
   create_table "addresses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "householder_name"
     t.string "phone_number"
@@ -27,6 +27,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_18_215008) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "stage", default: 0, null: false
+    t.text "assignee_notes"
+    t.datetime "expected_start_date"
+    t.datetime "expected_finish_date"
+    t.string "code"
+    t.index ["code"], name: "index_addresses_on_code", unique: true
     t.index ["congregation_id"], name: "index_addresses_on_congregation_id"
     t.index ["stage"], name: "index_addresses_on_stage"
   end
