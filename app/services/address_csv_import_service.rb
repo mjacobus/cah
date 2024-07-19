@@ -82,7 +82,6 @@ class AddressCsvImportService
       code: row[:code],
       expected_start_date: parse_date(row[:expected_start_date]),
       expected_finish_date: parse_date(row[:expected_finish_date]),
-      postal_code: row[:postal_code],
       latitude: row[:latitude],
       longitude: row[:longitude]
     )
