@@ -1,6 +1,8 @@
 require 'csv'
 
 class AddressCsvImportService
+  # Optional:
+  # postal_code
   COLUMNS = %i[
     circuit_name
     city_name
@@ -11,8 +13,11 @@ class AddressCsvImportService
     street_name
     number
     complement
-    postal_code
     stage
+    code
+    assignee_notes
+    expected_start_date
+    expected_finish_date
   ].freeze
 
   def import_csv(url:)
@@ -73,6 +78,11 @@ class AddressCsvImportService
       number: row[:number],
       complement: row[:complement],
       postal_code: row[:postal_code],
+      assignee_notes: row[:assignee_notes],
+      code: row[:code],
+      expected_start_date: parse_date(row[:expected_start_date]),
+      expected_finish_date: parse_date(row[:expected_finish_date]),
+      postal_code: row[:postal_code],
       latitude: row[:latitude],
       longitude: row[:longitude]
     )
@@ -119,5 +129,11 @@ class AddressCsvImportService
     return [] unless value.size == 2
 
     value
+  end
+
+  def parse_date(date)
+    return nil unless date
+
+    Date.parse(date, '%d/%m/%Y')
   end
 end
