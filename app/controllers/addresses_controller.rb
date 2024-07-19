@@ -98,6 +98,10 @@ class AddressesController < ApplicationController
       longitude
       verified
       stage
+      assignee_notes
+      expected_start_date
+      expected_finish_date
+      code
     ]
 
     params.require(:address).permit(*fields)
