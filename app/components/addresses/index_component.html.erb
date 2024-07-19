@@ -24,6 +24,9 @@
         <th>Endereço</th>
         <th>Congregação</th>
         <th>Lat/Lon</th>
+        <th>Responsável</th>
+        <th>Previsão início</th>
+        <th>Previsão conclusão</th>
         <th>Verificado</th>
         <th>Etapa</th>
       </tr>
@@ -52,12 +55,15 @@
                 <% end %>
               </div>
           </td>
-          <td><%= link_to(address.id, action: :edit, id: address.id) %></td>
+          <td><%= link_to(address.code_or_id, action: :edit, id: address.id) %></td>
           <td><%= link_to(address.householder_name, action: :edit, id: address.id) %></td>
           <td><%= address.phone_number %></td>
           <td><%= address.full_address %></td>
           <td><%= address.congregation.full_description %></td>
           <td><%= address.geolocation %></td>
+          <td><%= address.assignee_notes %></td>
+          <td><%= format_date(address.expected_start_date) %></td>
+          <td><%= format_date(address.expected_finish_date) %></td>
           <td><%= boolean(address.verified?) %></td>
           <td><%= address_stage(address) %></td>
         </tr>

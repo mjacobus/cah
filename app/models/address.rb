@@ -31,6 +31,10 @@ class Address < ApplicationRecord
     Geolocation.new(latitude, longitude)
   end
 
+  def code_or_id
+    code || "id-#{id}"
+  end
+
   def update_geolocation(force: false)
     return if force == false && geolocation.present?
 
