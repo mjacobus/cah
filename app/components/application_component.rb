@@ -5,6 +5,12 @@ class ApplicationComponent < ViewComponent::Base
     value ? 'Sim' : 'Não'
   end
 
+  def format_date(date, format: :default)
+    return if date.nil?
+
+    l(date.to_date, format:)
+  end
+
   def add_title(title)
     helpers.add_page_title(title)
   end
