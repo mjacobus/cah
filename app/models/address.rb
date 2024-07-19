@@ -10,6 +10,7 @@ class Address < ApplicationRecord
   validates :latitude, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90, allow_nil: true }
   validates :latitude, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90, allow_nil: true }
   validates :stage, presence: true
+  validates :code, uniqueness: { case_sensitive: false }
 
   scope :ordered_by_householder_name, ->(direction: :asc) { order(householder_name: direction) }
   scope :with_stage, ->(stage) { where(stage:) }
