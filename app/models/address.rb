@@ -16,13 +16,17 @@ class Address < ApplicationRecord
   scope :with_stage, ->(stage) { where(stage:) }
 
   def full_address
-    [
+    value = [
       street_name,
       number,
       complement,
       neighborhood,
       city_name
     ].map(&:presence).compact.join(', ')
+
+    value += " - #{postal_code}" if postal_code.present?
+
+    value
   end
 
   def geolocation

@@ -1,19 +1,16 @@
 module Addresses
   class ExportService
     HEADERS = [
-      'Nome',
-      'Congregação',
-      'Telefone',
-      'Rua',
-      'Número',
-      'Complemento',
-      'Bairro',
-      'Cidade',
-      'CEP',
-      'Lat/Lon',
       'Código',
-      'Atualizado',
-      'Etapa'
+      'Nome',
+      'Telefone',
+      'Endereço',
+      'Lat/Lon',
+      'Etapa',
+      'Responsável',
+      'Início estimado',
+      'Conclusão estimada',
+      'Data Atualização'
     ].freeze
 
     def initialize(one_sheet_per_congregation: false)
@@ -37,19 +34,16 @@ module Addresses
     def add_addresses_to_worksheet(sheet:, congregation:, addresses:)
       congregation_addresses(congregation:, addresses:).find_each(batch_size: 100) do |address|
         sheet.add_row([
+                        address.code_or_id,
                         address.householder_name,
-                        congregation.full_description,
                         address.phone_number,
-                        address.street_name,
-                        address.number,
-                        address.complement,
-                        address.neighborhood,
-                        address.city_name,
-                        address.postal_code,
+                        address.full_address,
                         address.geolocation.to_s,
-                        address.id,
-                        address.updated_at,
-                        address.human_stage_name
+                        address.human_stage_name,
+                        address.assignee_notes,
+                        format_date(address.expected_start_date),
+                        format_date(address.expected_finish_date),
+                        format_date(address.updated_at)
                       ])
       end
     end
@@ -81,6 +75,12 @@ module Addresses
 
     def add_headers_to_worksheet(sheet)
       sheet.add_row(HEADERS)
+    end
+
+    def format_date(date)
+      return nil unless date
+
+      date.strftime('%d/%m/%Y')
     end
   end
 end
