@@ -19,7 +19,7 @@
 
   <div class="alert alert-secondary">
     <div class="form-group">
-      <%= form.label "Número", class: "form-label" %>
+      <%= form.label "Código", class: "form-label" %>
       <%= form.text_field :code, class: "form-control", required: true %>
       <%= render InputErrorComponent.new(record: address, field_name: :code) %>
     </div>
