@@ -63,8 +63,8 @@ class AddressesController < ApplicationController
   end
 
   def addresses
-    @addresses ||= congregation.addresses.ordered_by_householder_name if congregation
-    @addresses ||= Address.ordered_by_householder_name
+    @addresses ||= congregation.addresses.ordered_by_code if congregation
+    @addresses ||= Address.ordered_by_code
     @addresses
   end
 

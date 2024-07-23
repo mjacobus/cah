@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get :export, to: 'addresses#export'
 
+  resources :addresses
+
   resources :circuits do
     resources :congregations do
       resources :addresses do

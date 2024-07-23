@@ -13,6 +13,7 @@ class Address < ApplicationRecord
   validates :code, uniqueness: { case_sensitive: false }
 
   scope :ordered_by_householder_name, ->(direction: :asc) { order(householder_name: direction) }
+  scope :ordered_by_code, ->(direction: :asc) { order(code: direction) }
   scope :with_stage, ->(stage) { where(stage:) }
 
   def full_address
