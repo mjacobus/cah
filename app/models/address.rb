@@ -49,14 +49,18 @@ class Address < ApplicationRecord
 
     location = data.dig('results', 0, 'geometry', 'location')
 
-    raise("Error saving address #{location['error']}") if location['error']
+    unless location
+      Rails.logger.info("No location for address #{id}")
+      return
+    end
+
+    raise("Error saving address #{location['error']}") if location && location['error']
 
     self.latitude = location['lat']
     self.longitude = location['lng']
     save || raise("Error saving address #{errors.full_messages}")
   rescue RuntimeError => e
-    Rails.logger.info("Error updating geolocation for account #{id}: #{e.message}")
-    raise e if Rails.env.development?
+    Rails.logger.info("Error updating geolocation for address #{id}: #{e.message}")
   end
 
   def human_stage_name

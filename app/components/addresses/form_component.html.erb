@@ -2,36 +2,27 @@
 <% add_title("Congregação #{congregation.full_description}") if congregation  %>
 
 <% if congregation  %>
-  <h3>Congregação <%= congregation.full_description %></h3>
+  <h3 style="margin-bottom: 20pt;">Congregação <%= congregation.full_description %></h3>
 <% end %>
-
-<div class="alert alert-info">
-  <% if edit? %>
-    <p>Edite aqui os dados da casa que precisa de limpeza.</p>
-  <% else %>
-    <p>Adicione aqui os dados da casa que precisa de limpeza.</p>
-  <% end %>
-</div>
-
 
 <%= form_for(address, url: target_url, local: true, method: method, html: { novalidate: true }, data: { turbo_frame: '_top'})  do |form| %>
   <h5>Dados do morador</h5>
 
   <div class="alert alert-secondary">
-    <div class="form-group">
+    <div class="mb-3">
       <%= form.label "Código", class: "form-label" %>
       <%= form.text_field :code, class: "form-control", required: true %>
       <%= render InputErrorComponent.new(record: address, field_name: :code) %>
     </div>
 
 
-    <div class="form-group">
+    <div class="mb-3">
       <%= form.label "Nome", class: "form-label" %>
       <%= form.text_field :householder_name, class: "form-control", required: true %>
       <%= render InputErrorComponent.new(record: address, field_name: :householder_name) %>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
       <%= form.label "Telefone", class: "form-label" %>
       <%= form.text_field :phone_number, class: "form-control", required: true %>
       <%= render InputErrorComponent.new(record: address, field_name: :phone_number) %>
@@ -40,55 +31,55 @@
 
   <h5>Endereço</h5>
   <div class="alert alert-secondary">
-    <div class="form-group">
+    <div class="mb-3">
       <%= form.label "Rua", class: "form-label" %>
       <%= form.text_field :street_name, class: "form-control", required: true %>
       <%= render InputErrorComponent.new(record: address, field_name: :street_name) %>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
       <%= form.label "Número", class: "form-label" %>
       <%= form.text_field :number, class: "form-control", required: true %>
       <%= render InputErrorComponent.new(record: address, field_name: :number) %>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
       <%= form.label "Complemento", class: "form-label" %>
       <%= form.text_field :complement, class: "form-control", required: true %>
       <%= render InputErrorComponent.new(record: address, field_name: :complement) %>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
       <%= form.label "Bairro", class: "form-label" %>
       <%= form.text_field :neighborhood, class: "form-control", required: true %>
       <%= render InputErrorComponent.new(record: address, field_name: :neighborhood) %>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
       <%= form.label "Cidade", class: "form-label" %>
       <%= form.text_field :city_name, class: "form-control", required: true %>
       <%= render InputErrorComponent.new(record: address, field_name: :city_name) %>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
       <%= form.label "CEP", class: "form-label" %>
       <%= form.text_field :postal_code, class: "form-control", required: true %>
       <%= render InputErrorComponent.new(record: address, field_name: :postal_code) %>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
       <%= form.label "Responsável", class: "form-label" %>
       <%= form.text_area :assignee_notes, class: "form-control" %>
       <%= render InputErrorComponent.new(record: address, field_name: :_notespostal_code) %>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
       <%= form.label "Início previsto para", class: "form-label" %>
       <%= form.date_field :expected_start_date, class: "form-control" %>
       <%= render InputErrorComponent.new(record: @address, field_name: :expected_start_date) %>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
       <%= form.label "Concusão prevista para", class: "form-label" %>
       <%= form.date_field :expected_finish_date, class: "form-control" %>
       <%= render InputErrorComponent.new(record: @address, field_name: :expected_finish_date) %>
@@ -98,13 +89,13 @@
   <div class="alert alert-info">
     <p style="margin-bottom: 1em;">Cordenadas Geográficas. Deixe em branco para que sejam preenchidas automaticamente.</p>
 
-    <div class="form-group">
+    <div class="mb-3">
       <%= form.label :latitude, class: "form-label" %>
       <%= form.number_field :latitude, class: "form-control", step: 0.000001 %>
       <%= render InputErrorComponent.new(record: address, field_name: :latitude) %>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
       <%= form.label :longitude, class: "form-label" %>
       <%= form.number_field :longitude, class: "form-control", step: 0.000001 %>
       <%= render InputErrorComponent.new(record: address, field_name: :longitude) %>
