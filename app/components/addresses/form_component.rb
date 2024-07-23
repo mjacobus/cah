@@ -10,9 +10,19 @@ class Addresses::FormComponent < ApplicationComponent
   end
 
   def target_url
-    return circuit_congregation_address_path(circuit, congregation, address) if edit?
+    if edit? && circuit && congregation
+        return circuit_congregation_address_path(circuit, congregation, address)
+    end
 
-    circuit_congregation_addresses_path(circuit, congregation)
+    if circuit && congregation
+      return circuit_congregation_addresses_path(circuit, congregation)
+    end
+
+    if edit?
+      return address_path(address)
+    end
+
+    addresses_path
   end
 
   def stage_options
@@ -28,7 +38,7 @@ class Addresses::FormComponent < ApplicationComponent
   end
 
   def submit_label
-    edit? ? 'Atualizar Endreço' : 'Adicionar Endereço'
+    edit? ? 'Atualizar Endereço' : 'Adicionar Endereço'
   end
 
   def edit?
