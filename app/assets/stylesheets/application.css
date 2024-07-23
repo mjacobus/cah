@@ -57,3 +57,7 @@ body {
 .alert-secondary {
   background: #eee;
 }
+
+.invalid-feedback {
+  display: block;
+}
