@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
   def index
-    render Addresses::IndexComponent.new(addresses:, congregation:, circuit:)
+    render Addresses::IndexComponent.new(addresses: paginate(addresses), congregation:, circuit:)
   end
 
   def export
