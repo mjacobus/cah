@@ -13,6 +13,7 @@ gem 'dotenv'
 gem 'httparty'
 gem 'importmap-rails'
 gem 'jbuilder' # Build JSON APIs with ease [https://github.com/rails/jbuilder]
+gem 'kaminari'
 gem 'koine-rest_client'
 gem 'mysql2', '~> 0.5'
 gem 'puma', '>= 5.0'
