@@ -2,7 +2,7 @@
 
 class Home::IndexComponent < ApplicationComponent
   def congregations
-    @congregations ||= Congregation.order(:city_name).includes(:circuit).all
+    @congregations ||= Congregation.order(:city_name, :name).includes(:circuit).all
   end
 
   def addresses_link(congregation)
