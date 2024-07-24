@@ -3,6 +3,7 @@ module Addresses
     HEADERS = [
       'Código',
       'Nome',
+      'Congregação',
       'Telefone',
       'Endereço',
       'Lat/Lon',
@@ -36,6 +37,7 @@ module Addresses
         sheet.add_row([
                         address.code_or_id,
                         address.householder_name,
+                        address.congregation.full_description,
                         address.phone_number,
                         address.full_address,
                         address.geolocation.to_s,
