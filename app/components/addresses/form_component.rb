@@ -50,4 +50,11 @@ class Addresses::FormComponent < ApplicationComponent
   def cancel_url
     helpers.url_for(action: :index)
   end
+
+  def last_code_info
+    id = Address.order(:id).last&.code
+    return unless id
+
+    "Último cadastrado: #{id}"
+  end
 end

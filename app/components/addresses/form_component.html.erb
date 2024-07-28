@@ -11,7 +11,7 @@
   <div class="alert alert-secondary">
     <div class="mb-3">
       <%= form.label "Código", class: "form-label" %>
-      <%= form.text_field :code, class: "form-control", required: true %>
+      <%= form.text_field :code, class: "form-control", required: true, placeholder: last_code_info %>
       <%= render InputErrorComponent.new(record: address, field_name: :code) %>
     </div>
 
