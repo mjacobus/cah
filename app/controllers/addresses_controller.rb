@@ -56,6 +56,13 @@ class AddressesController < ApplicationController
     render Addresses::FormComponent.new(address:, congregation:, circuit:)
   end
 
+  def destroy
+    address.destroy
+
+    flash[:notice] = 'Endereço removido com sucesso.'
+    redirect_to(action: :index, id: nil)
+  end
+
   private
 
   def address

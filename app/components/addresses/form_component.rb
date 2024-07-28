@@ -58,4 +58,16 @@ class Addresses::FormComponent < ApplicationComponent
 
     "Último cadastrado: #{id}"
   end
+
+  def destroy_link
+    return unless edit?
+
+    link_to(
+      'Excluir',
+      address_path(address),
+      method: :delete,
+      data: { confirm: 'Tem certeza que deseja excluir?' },
+      class: 'btn btn-danger'
+    )
+  end
 end
