@@ -27,3 +27,4 @@ end
 Congregation.find_or_create_by!(name: 'Sul', circuit_id: c2.id) do |c|
   c.city_name = 'California'
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
