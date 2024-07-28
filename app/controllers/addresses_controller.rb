@@ -24,12 +24,12 @@ class AddressesController < ApplicationController
   end
 
   def new
-    address = congregation.addresses.build
+    new_address
     render Addresses::FormComponent.new(address:, congregation:, circuit:)
   end
 
   def create
-    address = congregation.addresses.build(address_params)
+    new_address(address_params)
 
     if address.save
       address.update_geolocation
@@ -60,6 +60,12 @@ class AddressesController < ApplicationController
 
   def address
     @address ||= addresses.find(params[:id])
+  end
+
+  def new_address(params = {})
+    return @address = congregation.addresses.build(params) if congregation
+
+    @address = Address.build(params)
   end
 
   def addresses
@@ -101,6 +107,7 @@ class AddressesController < ApplicationController
       assignee_notes
       expected_start_date
       expected_finish_date
+      congregation_id
       code
     ]
 

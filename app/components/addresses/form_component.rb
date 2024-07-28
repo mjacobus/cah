@@ -10,19 +10,17 @@ class Addresses::FormComponent < ApplicationComponent
   end
 
   def target_url
-    if edit? && circuit && congregation
-        return circuit_congregation_address_path(circuit, congregation, address)
-    end
+    return circuit_congregation_address_path(circuit, congregation, address) if edit? && circuit && congregation
 
-    if circuit && congregation
-      return circuit_congregation_addresses_path(circuit, congregation)
-    end
+    return circuit_congregation_addresses_path(circuit, congregation) if circuit && congregation
 
-    if edit?
-      return address_path(address)
-    end
+    return address_path(address) if edit?
 
     addresses_path
+  end
+
+  def congregation_options
+    Congregation.order(:name, :city_name).map { |c| [c.full_description, c.id] }
   end
 
   def stage_options
