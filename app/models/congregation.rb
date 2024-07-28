@@ -17,6 +17,12 @@ class Congregation < ApplicationRecord
     "#{text} (#{circuit.name})"
   end
 
+  # Not sure why I need this, but if I don't have this,
+  # I get duplicated index (value = '')
+  def number=(value)
+    super(value.presence)
+  end
+
   def self.ransackable_attributes(_auth_object = nil)
     %w[
       circuit_id
