@@ -20,7 +20,8 @@ class Addresses::FormComponent < ApplicationComponent
   end
 
   def congregation_options
-    Congregation.order(:name, :city_name).map { |c| [c.full_description, c.id] }
+    ids = Congregation.order(:name, :city_name).map { |c| [c.full_description, c.id] }
+    ids.unshift(['Selecione uma congregação', ''])
   end
 
   def stage_options

@@ -11,6 +11,7 @@ class Address < ApplicationRecord
   validates :latitude, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90, allow_nil: true }
   validates :stage, presence: true
   validates :code, uniqueness: { case_sensitive: false }
+  validates :congregation, presence: true
 
   scope :ordered_by_householder_name, ->(direction: :asc) { order(householder_name: direction) }
   scope :ordered_by_code, ->(direction: :asc) { order(code: direction) }
