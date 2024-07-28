@@ -18,7 +18,13 @@ class Congregation < ApplicationRecord
   end
 
   def self.ransackable_attributes(_auth_object = nil)
-    %w[address circuit_id city_name contact_person_name contact_person_phone_number created_at id
-       id_value name number updated_at]
+    %w[
+      circuit_id
+      city_name
+      contact_person_name
+      contact_person_phone_number
+      name
+      number
+    ]
   end
 end
