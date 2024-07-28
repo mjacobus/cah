@@ -79,30 +79,4 @@ class Address < ApplicationRecord
     parts << postal_code
     parts.compact.join(', ')
   end
-
-  def self.ransackable_attributes(_auth_object = nil)
-    %w[
-      assignee_notes
-      city_name
-      code
-      complement
-      congregation_id
-      created_at
-      expected_finish_date
-      expected_start_date
-      householder_name
-      id
-      id_value
-      latitude
-      longitude
-      neighborhood
-      number
-      phone_number
-      postal_code
-      stage
-      street_name
-      updated_at
-      verified
-    ]
-  end
 end
