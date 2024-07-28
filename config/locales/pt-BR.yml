@@ -43,6 +43,8 @@ pt-BR:
         overseer_name: "Superintendente"
         overseer_phone_number: "Telefone"
         overseer_phone: "Telefone"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
   errors:
     format: "%{attribute} %{message}"
     messages:
