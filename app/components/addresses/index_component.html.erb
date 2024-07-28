@@ -59,7 +59,7 @@
           <td><%= link_to(address.householder_name, action: :edit, id: address.id) %></td>
           <td><%= address.phone_number %></td>
           <td><%= address.full_address %></td>
-          <td><%= address.congregation.full_description %></td>
+          <td><%= link_to(address.congregation.full_description, admin_congregation_path(address.congregation)) %></td>
           <td><%= address.geolocation %></td>
           <td><%= address.assignee_notes %></td>
           <td><%= format_date(address.expected_start_date) %></td>
