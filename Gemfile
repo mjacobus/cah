@@ -5,6 +5,7 @@ ruby '3.2.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.3', '>= 7.1.3.3'
 
+gem 'activeadmin'
 gem 'bootsnap', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'caxlsx'
 gem 'caxlsx_rails' # if you want to use it with Rails
