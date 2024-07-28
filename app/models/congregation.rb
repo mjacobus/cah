@@ -16,4 +16,9 @@ class Congregation < ApplicationRecord
     text = "#{text} (#{number})" if number.present?
     "#{text} (#{circuit.name})"
   end
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[address circuit_id city_name contact_person_name contact_person_phone_number created_at id
+       id_value name number updated_at]
+  end
 end
