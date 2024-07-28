@@ -36,6 +36,7 @@ pt-BR:
         name: "Nome"
         number: "Número"
         circuit: "Circuito"
+        city_name: "Cidade"
         contact_person: "Contato"
         contact_person_phone_number: "Telefone"
       circuit:

@@ -13,4 +13,16 @@ ActiveAdmin.register Congregation do
   filter :contact_person_name
   filter :contact_person_number
   filter :number
+
+  index do
+    selectable_column
+    id_column
+
+    column :name
+    column         :city_name
+    column         :circuit
+    column         :number
+
+    actions
+  end
 end
