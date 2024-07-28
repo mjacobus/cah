@@ -31,7 +31,7 @@
     <div class="mb-3">
       <%= form.label "Congregação", class: "form-label" %>
       <%= form.select :congregation_id, congregation_options, {}, class: "form-control" %>
-      <%= render InputErrorComponent.new(record: address, field_name: :congregation_id) %>
+      <%= render InputErrorComponent.new(record: address, field_name: :congregation) %>
     </div>
   </div>
 
