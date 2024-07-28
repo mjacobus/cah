@@ -18,6 +18,7 @@ gem 'kaminari'
 gem 'koine-rest_client'
 gem 'mysql2', '~> 0.5'
 gem 'puma', '>= 5.0'
+gem 'sass-rails'
 gem 'sprockets-rails'
 gem 'stimulus-rails' # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'turbo-rails' # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
