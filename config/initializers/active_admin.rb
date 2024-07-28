@@ -120,7 +120,7 @@ ActiveAdmin.setup do |config|
   # will call the method to return the path.
   #
   # Default:
-  config.logout_link_path = :destroy_admin_user_session_path
+  config.logout_link_path = :destroy_user_session_path
   # This setting changes the http method used when rendering the
 
   # link. For example :get, :delete, :put, etc..
@@ -349,4 +349,21 @@ ActiveAdmin.setup do |config|
   # You can switch to using Webpacker here.
   #
   # config.use_webpacker = true
+
+  # Active Admin w/o sass
+  # https://henrikbjorn.medium.com/til-using-activeadmin-with-importmap-rails-289cde6f76b8
+  config.use_webpacker = false
+
+  config.register_stylesheet 'active_admin.css'
+
+  # clear any previous assets
+  config.clear_javascripts!
+
+  # We need jQuery and jQuery UI and jQuery-ujs which are dependencies
+  config.register_javascript 'https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.js'
+  config.register_javascript 'https://cdn.jsdelivr.net/npm/jquery-ujs@1.2.3/src/rails.min.js'
+  config.register_javascript 'https://cdn.jsdelivr.net/npm/jquery-ui@1.13.2/dist/jquery-ui.min.js'
+
+  # The actual active admin javascript file
+  config.register_javascript 'https://cdn.jsdelivr.net/npm/@activeadmin/activeadmin@2.13.1/app/assets/javascripts/active_admin/base.min.js'
 end
