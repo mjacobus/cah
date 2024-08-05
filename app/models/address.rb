@@ -14,7 +14,11 @@ class Address < ApplicationRecord
   validates :congregation, presence: true
 
   scope :ordered_by_householder_name, ->(direction: :asc) { order(householder_name: direction) }
-  scope :ordered_by_code, ->(direction: :asc) { order(code: direction) }
+  scope :ordered_by_code, lambda { |direction: :asc|
+    direction = { asc: :asc, desc: :desc }[direction.to_sym] || :asc
+    sql = "CASE WHEN code REGEXP '^[0-9]+$' THEN LPAD(code, 10, '0') ELSE code END #{direction.upcase}"
+    order(Arel.sql(sql))
+  }
   scope :with_stage, ->(stage) { where(stage:) }
   scope :with_dependencies, -> { includes(congregation: :circuit) }
 
