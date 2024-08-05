@@ -1,4 +1,14 @@
 class AddressesController < ApplicationController
+  def search
+    address = Address.find_by(code: params[:code])
+
+    return redirect_to edit_address_path(address) if params[:code]
+
+    render :index
+  rescue ActiveRecord::RecordNotFound
+    render :index
+  end
+
   def index
     render Addresses::IndexComponent.new(addresses: paginate(addresses), congregation:, circuit:)
   end
