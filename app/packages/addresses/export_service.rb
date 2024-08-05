@@ -56,7 +56,7 @@ module Addresses
     end
 
     def congregation_addresses(congregation:, addresses:)
-      congregation.addresses.where(id: addresses.select(:id))
+      congregation.addresses.where(id: addresses.select(:id)).ordered_by_code
     end
 
     def worksheet_for(congregation, workbook:)
