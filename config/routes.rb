@@ -12,7 +12,11 @@ Rails.application.routes.draw do
 
   get :export, to: 'addresses#export'
 
-  resources :addresses
+  resources :addresses do
+    collection do
+      get :search
+    end
+  end
 
   resources :circuits do
     resources :congregations do
